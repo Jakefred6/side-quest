@@ -8,7 +8,20 @@ const {Text} = Typography;
 
 const ContinentMap = ({onContinentClick}) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedContinent, setSelectedContinent] = useState(null);
+    const [selectedContinent, setSelectedContinent] = useState([]);
+
+    const regionQuestData = [
+        {id: 1, username: "Hero1", title: "Retrieve the Lost Artifact", location: "Ancient Ruins"},
+        {id: 2, username: "Adventurer42", title: "Uncover the Mystery of the Forbidden Forest", location: "Dark Woods"},
+        {id: 3, username: "MageMaster", title: "Study the Arcane Runes", location: "Magical Library"},
+        {id: 4, username: "StealthyRogue", title: "Steal the Crown Jewels", location: "Royal Palace"},
+        {id: 5, username: "SkyPirate99", title: "Plunder the Floating Sky Islands", location: "Sky Kingdom"},
+        {id: 6, username: "Explorer007", title: "Chart the Unexplored Seas", location: "Mysterious Ocean"},
+        {id: 7, username: "DungeonDelver", title: "Conquer the Labyrinth of Shadows", location: "Haunted Dungeon"},
+    ];
+
+    // State for the modal data to display when a continent is clicked for regionQuestData array
+    const [modalData, setModalData] = useState(regionQuestData);
 
     const continents = [
         // Asia
@@ -258,20 +271,91 @@ const ContinentMap = ({onContinentClick}) => {
         }
     ];
 
-    const regionQuestData = [
-        {id: 1, username: "Hero1", title: "Retrieve the Lost Artifact", location: "Ancient Ruins"},
-        {id: 2, username: "Adventurer42", title: "Uncover the Mystery of the Forbidden Forest", location: "Dark Woods"},
-        {id: 3, username: "MageMaster", title: "Study the Arcane Runes", location: "Magical Library"},
-        {id: 4, username: "StealthyRogue", title: "Steal the Crown Jewels", location: "Royal Palace"},
-        {id: 5, username: "SkyPirate99", title: "Plunder the Floating Sky Islands", location: "Sky Kingdom"},
-        {id: 6, username: "Explorer007", title: "Chart the Unexplored Seas", location: "Mysterious Ocean"},
-        {id: 7, username: "DungeonDelver", title: "Conquer the Labyrinth of Shadows", location: "Haunted Dungeon"},
-    ];
+
 
     const handleContinentClick = (continent) => {
         setSelectedContinent(continent);
         setModalVisible(true);
         onContinentClick(continent.id);
+
+        const AsiaRegionQuestData = [
+            {id: 1, username: "ExplorerAsia", title: "Visit the Great Wall", location: "China"},
+            {id: 2, username: "AdventurousNomad", title: "Explore the Pyramids of Giza", location: "Egypt"},
+            {id: 3, username: "SilkRoadTraveler", title: "Savor Spices along the Silk Road", location: "Central Asia"},
+            {id: 4, username: "TeaEnthusiast", title: "Experience a Traditional Tea Ceremony", location: "Japan"},
+            {id: 5, username: "MountainTrekker", title: "Conquer Mount Everest", location: "Nepal"},
+            {id: 6, username: "ZenMaster", title: "Meditate in the Gardens of Kyoto", location: "Japan"},
+        ];
+
+        const EuropeRegionQuestData = [
+            {id: 1, username: "ItalianFoodie", title: "Eat Spaghetti around the Roman Colosseum", location: "Italy"},
+            {id: 2, username: "VikingExplorer", title: "Discover Viking History in Norway", location: "Norway"},
+            {id: 3, username: "AlpineAdventurer", title: "Ski the Slopes of the Swiss Alps", location: "Switzerland"},
+        ];
+
+        const AfricaRegionQuestData = [
+            {id: 1, username: "SafariTrailblazer", title: "Explore the Serengeti Plains", location: "Tanzania"},
+            {id: 2, username: "SphinxSeeker", title: "Unlock the Mysteries of the Sphinx", location: "Egypt"},
+            {id: 3, username: "NileExpeditionist", title: "Cruise the Nile River", location: "Egypt"},
+            {id: 4, username: "SaharaNomad", title: "Cross the Sahara Desert", location: "Morocco"},
+            {id: 5, username: "CapeTownExplorer", title: "Visit Table Mountain", location: "South Africa"},
+            {id: 6, username: "VictoriaFallsAdventurer", title: "Witness the Power of Victoria Falls", location: "Zimbabwe"},
+        ]
+
+        const AustraliaRegionQuestData = [
+            {id: 1, username: "OutbackExplorer", title: "Pet a Koala in the Australian Outback", location: "Australia"},
+            {id: 2, username: "GreatBarrierDiver", title: "Dive the Great Barrier Reef", location: "Australia"},
+            {id: 3, username: "SydneyOperaVisitor", title: "Attend a Performance at the Sydney Opera House", location: "Australia"},
+            {id: 4, username: "UluruExplorer", title: "Experience the Majesty of Uluru", location: "Australia"},
+            {id: 5, username: "TasmanianAdventurer", title: "Explore the Wilderness of Tasmania", location: "Australia"},
+            {id: 6, username: "GoldCoastSurfer", title: "Catch Waves on the Gold Coast", location: "Australia"},
+        ];
+
+        const NorthAmericaRegionQuestData = [
+            {id: 1, username: "CanyonAdventurer", title: "Visit the Grand Canyon", location: "USA"},
+            {id: 2, username: "MapleLeafExplorer", title: "Hike the Rocky Mountains", location: "Canada"},
+            {id: 3, username: "NiagaraFallsSeeker", title: "Experience the Power of Niagara Falls", location: "Canada"},
+            {id: 4, username: "YosemiteExplorer", title: "Explore Yosemite National Park", location: "USA"},
+            {id: 5, username: "AlaskaWildernessSeeker", title: "Discover the Untamed Beauty of Alaska", location: "USA"},
+            {id: 6, username: "NewOrleansJazzEnthusiast", title: "Immerse in Jazz Culture in New Orleans", location: "USA"},
+        ];
+
+        const SouthAmericaRegionQuestData = [
+            {id: 1, username: "AndeanExplorer", title: "Trek the Inca Trail to Machu Picchu", location: "Peru"},
+            {id: 2, username: "AmazonTrailblazer", title: "Explore the Amazon Rainforest", location: "Brazil"},
+            {id: 3, username: "RioCarnivalAttendee", title: "Celebrate Carnival in Rio de Janeiro", location: "Brazil"},
+            {id: 4, username: "PatagoniaExplorer", title: "Discover the Wilds of Patagonia", location: "Argentina"},
+            {id: 5, username: "GalapagosExplorer", title: "Observe Wildlife in the Galapagos Islands", location: "Ecuador"},
+            {id: 6, username: "AngelFallsSeeker", title: "Marvel at the Beauty of Angel Falls", location: "Venezuela"},
+        ];
+
+
+        switch (continent.id) {
+            case 1:
+                setModalData(AsiaRegionQuestData);
+                break;
+            case 2:
+                setModalData(EuropeRegionQuestData);
+                break;
+            case 3:
+                setModalData(AfricaRegionQuestData);
+                break;
+            case 4:
+                setModalData(AustraliaRegionQuestData);
+                break;
+            case 5:
+                setModalData(NorthAmericaRegionQuestData);
+                break;
+            case 6:
+                setModalData(SouthAmericaRegionQuestData);
+                break;
+            default:
+                setModalData(regionQuestData);
+                break;
+        }
+
+        // Change
+
     };
 
     const handleModalCancel = () => {
@@ -318,18 +402,19 @@ const ContinentMap = ({onContinentClick}) => {
             <Modal
                 title={selectedContinent && selectedContinent.name}
                 open={modalVisible}
-                style={{ top: 10 }}
+                style={{top: 10}}
                 centered={true}
                 onCancel={handleModalCancel}
                 footer={null}
             >
                 {/* Add content for the modal here */}
-                <p className="text-green-600 mb-4">These are the quests in {selectedContinent && selectedContinent.name}</p>
+                <p className="text-green-600 mb-4">These are the quests
+                    in {selectedContinent && selectedContinent.name}</p>
                 <div className="flex flex-row w-full justify-center gap-5">
 
                     <div className="flex flex-col p-4 overflow-y-auto"
                          style={{height: "calc(100vh - 32px)", width: "100%"}}>
-                        {regionQuestData.map((quest) => (
+                        {modalData.map((quest) => (
                             <Card
                                 key={quest.id}
                                 hoverable={true}
@@ -347,7 +432,7 @@ const ContinentMap = ({onContinentClick}) => {
                                         <Text type="secondary">{quest.title}</Text>
 
                                     </div>
-                                    <div className="mt-2 text-gray-500">{quest.location}</div>
+                                    <div className="mt-2 text-gray-500">Location: {quest.location}</div>
                                 </div>
                             </Card>
                         ))}
@@ -362,9 +447,12 @@ const ContinentMap = ({onContinentClick}) => {
 const Dashboard = () => {
     // Sample data for gaming quests
     const questData = [
-        { id: 1, username: "Adventurer123", title: "Rescue the Captive Princess", location: "Royal Castle", continentId: 1 },
-        { id: 2, username: "EpicJourneyer", title: "Discover the Hidden City", location: "Lost Valley", continentId: 2 },
-        { id: 3, username: "BraveExplorer", title: "Explore the Forbidden Caves", location: "Dark Mountains", continentId: 3 },
+        {id: 1, username: "ExplorerAsia", title: "Visit the Great Wall", location: "China", continentId: 1 },
+        {id: 2, username: "AdventurousNomad", title: "Explore the Pyramids of Giza", location: "Egypt", continentId: 1},
+        {id: 3, username: "SilkRoadTraveler", title: "Savor Spices along the Silk Road", location: "Central Asia", continentId: 1},
+        {id: 4, username: "TeaEnthusiast", title: "Experience a Traditional Tea Ceremony", location: "Japan", continentId: 1},
+        {id: 5, username: "MountainTrekker", title: "Conquer Mount Everest", location: "Nepal", continentId: 1},
+        {id: 6, username: "ZenMaster", title: "Meditate in the Gardens of Kyoto", location: "Japan", continentId: 1},
     ];
 
 
@@ -401,7 +489,7 @@ const Dashboard = () => {
                                 <div className="mt-4 xl:text-lg text-xl text-black font-bold">
                                     <Text type="secondary">{quest.title}</Text>
                                 </div>
-                                <div className="mt-2 text-teal-700">{quest.location}</div>
+                                <div className="mt-2 text-teal-700">Location: {quest.location}</div>
                             </div>
                         </Card>
                     </Link>
