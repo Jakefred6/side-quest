@@ -86,8 +86,9 @@ const Main = () => {
         <Sidebar />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: "white" }}>
-          <div className="flex flex-row justify-between items-center">
+      <Header style={{ padding: 0, background: "white" }}>
+        <div className="flex flex-row justify-between items-center w-full">
+          <div className="flex items-center">
             <Button
               type="text"
               icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -101,20 +102,25 @@ const Main = () => {
                 zIndex: 999,
               }}
             />
-            <div className="flex justify-end m-4">
-              <Button className="mr-4" onClick={handleDashboardClick}>Dashboard</Button>
-              <Button className="mr-4" onClick={handleProfileClick}>Profile</Button>
-              <Button onClick={handleQuestClick}>Quest</Button>
-              <Dropdown.Button
-                menu={menuProps}
-                icon={<UserOutlined />}
-                className="ml-4"
-              >
-                Account
-              </Dropdown.Button>
-            </div>
+            {/* App name visible only on small screens */}
+            <span className="text-xl font-bold ml-4 md:hidden">Side Quest</span>
           </div>
-        </Header>
+          <div className="flex justify-end m-4 hidden md:flex"> {/* Hide on small screens, show on medium and up */}
+            <Button className="mr-4" onClick={handleDashboardClick}>Dashboard</Button>
+            <Button className="mr-4" onClick={handleProfileClick}>Profile</Button>
+            <Button onClick={handleQuestClick}>Quest</Button>
+            <Dropdown.Button
+              menu={menuProps}
+              icon={<UserOutlined />}
+              className="ml-4"
+            >
+              Account
+            </Dropdown.Button>
+          </div>
+        </div>
+      </Header>
+
+
 
         <Content className="m-[24px] p-[24px] bg-white rounded-md h-full overflow-scroll">
           <Routes>
