@@ -335,19 +335,19 @@ const ContinentMap = ({onContinentClick}) => {
                 setModalData(AsiaRegionQuestData);
                 break;
             case 2:
-                setModalData(EuropeRegionQuestData);
-                break;
-            case 3:
-                setModalData(AfricaRegionQuestData);
-                break;
-            case 4:
                 setModalData(AustraliaRegionQuestData);
                 break;
+            case 3:
+                setModalData(SouthAmericaRegionQuestData);
+                break;
+            case 4:
+                setModalData(EuropeRegionQuestData);
+                break;
             case 5:
-                setModalData(NorthAmericaRegionQuestData);
+                setModalData(AfricaRegionQuestData);
                 break;
             case 6:
-                setModalData(SouthAmericaRegionQuestData);
+                setModalData(NorthAmericaRegionQuestData);
                 break;
             default:
                 setModalData(regionQuestData);
