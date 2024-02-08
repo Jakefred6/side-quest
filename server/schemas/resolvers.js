@@ -1,5 +1,5 @@
-const User = require('../models/user');
-const Quest = require('../models/quest');
+const User = require('../models/User');
+const Quest = require('../models/Quest');
 
 const resolvers = {
   Query: {
