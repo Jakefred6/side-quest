@@ -3,6 +3,7 @@ const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const crypto = require('crypto'); // Add crypto module
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -10,6 +11,14 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({ typeDefs, resolvers });
+
+// Generate JWT secret
+const generateJwtSecret = () => {
+  return crypto.randomBytes(64).toString('hex');
+};
+
+// Set JWT secret in environment variable
+process.env.JWT_SECRET = generateJwtSecret();
 
 // Middleware to verify JWT token
 const authenticateToken = (req, res, next) => {
