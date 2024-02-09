@@ -1,7 +1,7 @@
 // App.jsx
 import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Dashboard, Login, NotFound, Profile, Quest, QuestInfo} from "./pages";
+import {Dashboard, Login, Logout, NotFound, Profile, Quest, QuestInfo} from "./pages";
 import {Main} from "./layouts";
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
                         <Route path="/info" element={<QuestInfo/>}/>
                         <Route path="/quest" element={<Quest/>}/>
                         <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/logout" element={<Logout/>}/>
                         {/* <Route exact path="/map" element={<Map />} /> */}
                     </Route>
                 ) : (
