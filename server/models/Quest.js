@@ -8,7 +8,7 @@ const questSchema = new Schema({
     country_city: { type: String, required: true },
     xp: { type: Number, required: true },
     location: {type: String, required: true},
-    username: {type: String, required: true}
+    username: {type: String,}
 });
 
 const Quest = mongoose.model('Quest', questSchema);

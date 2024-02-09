@@ -8,6 +8,7 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 const server = new ApolloServer({ typeDefs, resolvers });
 
 // Generate JWT secret
@@ -47,6 +48,14 @@ app.post('/login', (req, res) => {
 app.get('/protected', authenticateToken, (req, res) => {
   res.json({ message: 'Protected route accessed successfully', user: req.user });
 });
+
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+}
 
 // Start the server
 db.once('open', () => {
