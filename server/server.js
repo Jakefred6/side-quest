@@ -1,8 +1,6 @@
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
-const { expressMiddleware } = require('@apollo/server/express4');
 const jwt = require('jsonwebtoken');
-const path = require('path');
 const crypto = require('crypto'); // Add crypto module
 
 const { typeDefs, resolvers } = require('./schemas');
@@ -49,14 +47,6 @@ app.post('/login', (req, res) => {
 app.get('/protected', authenticateToken, (req, res) => {
   res.json({ message: 'Protected route accessed successfully', user: req.user });
 });
-
-// Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  });
-}
 
 // Start the server
 db.once('open', () => {
