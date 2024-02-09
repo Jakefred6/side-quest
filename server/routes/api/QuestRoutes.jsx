@@ -8,7 +8,7 @@ import NotFound from '../pages/NotFound';
 const QuestRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="*" element={<Dashboard />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/info" element={<QuestInfo />} />
       <Route path="/quest" element={<Quest />} />
