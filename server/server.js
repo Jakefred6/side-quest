@@ -11,6 +11,9 @@ const app = express();
 const server = new ApolloServer({typeDefs, resolvers });
 
 const startApolloServer = async () => {
+  await db; // Wait for the database connection to establish
+
+
   await server.start();
   
   app.use(express.urlencoded({ extended: true }));

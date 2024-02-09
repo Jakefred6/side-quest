@@ -7,6 +7,8 @@ const questSchema = new Schema({
     continent: { type: String, enum: ['NA', 'SA', 'EU', 'AF', 'AS', 'OC'], required: true },
     country_city: { type: String, required: true },
     xp: { type: Number, required: true },
+    location: {type: String, required: true},
+    username: {type: String,}
 });
 
 const Quest = mongoose.model('Quest', questSchema);
