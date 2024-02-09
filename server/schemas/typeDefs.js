@@ -14,6 +14,7 @@ const typeDefs = gql`
     continent: String!
     country_city: String!
     xp: Int!
+    location: String!
   }
 
   input QuestInput {
@@ -22,6 +23,7 @@ const typeDefs = gql`
     continent: String!
     country_city: String!
     xp: Int!
+    location: String!
   }
 
   type Query {
