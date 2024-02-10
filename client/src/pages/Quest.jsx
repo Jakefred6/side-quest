@@ -1,13 +1,33 @@
 import {Card, Typography} from "antd";
-import {Button, Form, Input} from 'antd';
+import {Button, Form, Input, Dropdown, Menu} from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 import React from "react";
 
 const {Text} = Typography;
+
+const continents = [
+    { id: 1, name: "Asia" },
+    { id: 2, name: "Australia" },
+    { id: 3, name: "South America" },
+    { id: 4, name: "Europe" },
+    { id: 5, name: "Africa" },
+    { id: 6, name: "North America" },
+    { id: 7, name: "Antarctica" },
+]
 
 const Quest = () => {
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
+
+    const continentMenu = (
+        <Menu>
+          {continents.map((continent) => (
+            <Menu.Item key={continent.id}>{continent.name}</Menu.Item>
+          ))}
+        </Menu>
+      );
+
     return (
         <div className="flex flex-col w-full justify-center">
             <div className="flex justify-between p-4 mb-5 border  items-center">
@@ -32,9 +52,13 @@ const Quest = () => {
                             <Form.Item name="title">
                                 <Input placeholder="Title"/>
                             </Form.Item>
-                            <Form.Item name="location">
-                                <Input type="text" placeholder="Location"/>
-                            </Form.Item>
+                            <Form.Item name="continent">
+                <Dropdown overlay={continentMenu}>
+                  <Button>
+                    Select Continent <DownOutlined />
+                  </Button>
+                </Dropdown>
+              </Form.Item>
                             <Form.Item name="xp">
                                 <Input type="text" placeholder="XP"/>
                             </Form.Item>
