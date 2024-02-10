@@ -16,12 +16,13 @@ export const CREATE_QUEST = gql`
     createQuest(questId: ID!, username: $username) {
       _id
       title
-      description
-      location
+      # description
+      continent
+      # country_city
       xp
+      # location
       username {
         _id
       }
-    }
   }
 `;

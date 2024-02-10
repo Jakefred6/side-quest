@@ -16,9 +16,11 @@ export const QUERY_QUEST = gql`
     quests {
       _id
       title
-      description
-      location
+      # description
+      continent
+      # country_city
       xp
+      # location
       username {
         _id
       }
@@ -31,9 +33,11 @@ export const QUERY_SINGLE_QUEST = gql`
     quest(_id: $_id) {
       _id
       title
-      description
-      location
+      # description
+      continent
+      # country_city
       xp
+      # location
       username {
         _id
       }
