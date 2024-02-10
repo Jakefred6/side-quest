@@ -3,6 +3,8 @@ import {Card, Typography} from "antd";
 import {Link} from "react-router-dom";
 import {UserOutlined} from "@ant-design/icons";
 import {Modal} from "antd";
+import { useQuery } from '@apollo/client';
+import { QUERY_QUEST } from '../utils/queries';
 
 const {Text} = Typography;
 
@@ -446,6 +448,10 @@ const ContinentMap = ({onContinentClick}) => {
 
 const Dashboard = () => {
     // Sample data for gaming quests
+    const { loading, data } = useQuery(QUERY_QUEST, {
+        fetchPolicy: "no-cache"
+      });
+
     const questData = [
         {id: 1, username: "ExplorerAsia", title: "Visit the Great Wall", location: "China", continentId: 1 },
         {id: 2, username: "AdventurousNomad", title: "Explore the Pyramids of Giza", location: "Egypt", continentId: 1},
