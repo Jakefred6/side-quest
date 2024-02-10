@@ -5,25 +5,27 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
+    password: String!
   }
 
   type Quest {
     _id: ID!
     title: String!
-    description: String!
-    continent: String!
-    country_city: String!
+    # description: String! // Commented out to match Quest.js
+    continent: Int!          # Adjusted to match Quest.js
+    # country_city: String! // Commented out to match Quest.js
     xp: Int!
-    location: String!
+    # location: String! // Commented out to match Quest.js
+    username: String!
   }
 
   input QuestInput {
     title: String!
-    description: String!
-    continent: String!
-    country_city: String!
+    # description: String! // Commented out to match Quest.js
+    continent: Int!          # Adjusted to match Quest.js
+    # country_city: String! // Commented out to match Quest.js
     xp: Int!
-    location: String!
+    # location: String! // Commented out to match Quest.js
   }
 
   type Query {
