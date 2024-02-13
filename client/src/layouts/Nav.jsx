@@ -10,7 +10,7 @@ import { Content, Footer, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { Dashboard } from "../pages";
+import { Dashboard, Login } from "../pages";
 import Sidebar from "./Sidebar";
 import { useContentContext } from "../providers/ContentContext";
 import {Profile, Quest} from '../pages';
@@ -83,8 +83,10 @@ const Main = () => {
         collapsed={collapsed}
         style={{ background: "#EBEBEB" }}
       >
-        <Sidebar />
-      </Sider>
+      <Sidebar />
+      </Sider>       
+       
+
       <Layout>
       <Header style={{ padding: 0, background: "white" }}>
         <div className="flex flex-row justify-between items-center w-full">
@@ -124,11 +126,12 @@ const Main = () => {
 
         <Content className="m-[24px] p-[24px] bg-white rounded-md h-full overflow-scroll">
           <Routes>
-            <Route exact path="/" element={<Dashboard />} />
+           <Route exact path="/" element={<Dashboard />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
             {/* Add routes for profile and quest */}
             <Route path="/profile" element={<Profile />} />
-            <Route path="/quest" element={<Quest />} />
+            <Route path="/quest" element={<Quest />} /> 
+            <Route path="/login" element={<Login />} /> 
           </Routes>
         </Content>
         <Footer className="text-center pt-0">
