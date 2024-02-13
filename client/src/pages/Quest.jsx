@@ -1,18 +1,18 @@
-import {Card, Typography} from "antd";
-import {Button, Form, Input, Dropdown, Menu} from 'antd';
+import {Card, Space, Typography} from "antd";
+import {Button, Form, Input, Select, Menu} from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import React from "react";
 
 const {Text} = Typography;
 
 const continents = [
-    { id: 1, name: "Asia" },
-    { id: 2, name: "Australia" },
-    { id: 3, name: "South America" },
-    { id: 4, name: "Europe" },
-    { id: 5, name: "Africa" },
-    { id: 6, name: "North America" },
-    { id: 7, name: "Antarctica" },
+    { key: 1, title: "Asia" },
+    { key: 2, title: "Australia" },
+    { key: 3, title: "South America" },
+    { key: 4, title: "Europe" },
+    { key: 5, title: "Africa" },
+    { key: 6, title: "North America" },
+    { key: 7, title: "Antarctica" },
 ]
 
 const Quest = () => {
@@ -20,13 +20,13 @@ const Quest = () => {
         console.log('Received values of form: ', values);
     };
 
-    const continentMenu = (
-        <Menu>
-          {continents.map((continent) => (
-            <Menu.Item key={continent.id}>{continent.name}</Menu.Item>
-          ))}
-        </Menu>
-      );
+    // const continentMenu = (
+    //     // <Menu>
+    //       {continents.map((continent) => (
+    //         <Menu.Item key={continent.id}>{continent.name}</Menu.Item>
+    //       ))}
+    //     {/* </Menu> */}
+    //   );
 
     return (
         <div className="flex flex-col w-full justify-center">
@@ -42,7 +42,7 @@ const Quest = () => {
                         className="shadow-lg mb-4"
                     >
                         <Form
-                            name="normal_login"
+                            name="quest-normal_login"
                             className="login-form"
                             initialValues={{
                                 remember: true,
@@ -53,12 +53,8 @@ const Quest = () => {
                                 <Input placeholder="Title"/>
                             </Form.Item>
                             <Form.Item name="continent">
-                <Dropdown menu={continentMenu}>
-                  <Button>
-                    Select Continent <DownOutlined />
-                  </Button>
-                </Dropdown>
-              </Form.Item>
+                                <Select options={continents} placeholder= "selectContinent"/>
+                            </Form.Item>
                             <Form.Item name="xp">
                                 <Input type="text" placeholder="XP"/>
                             </Form.Item>
