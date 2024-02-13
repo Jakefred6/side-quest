@@ -24,11 +24,11 @@ const client = new ApolloClient({
 });
 
 function App() {
-    localStorage.setItem('token', 'test_token');
-    const token = localStorage.getItem('token');
+    // localStorage.setItem('token', 'test_token');
+    // const token = localStorage.getItem('token');
     return (
         <ApolloProvider client={client}>
-            <Sidebar />
+            {/* <Sidebar /> */}
             <Nav />
             <Outlet />
         </ApolloProvider>
