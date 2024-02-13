@@ -448,9 +448,9 @@ const ContinentMap = ({onContinentClick}) => {
 
 const Dashboard = () => {
     // Sample data for gaming quests
-    const { loading, data } = useQuery(QUERY_QUEST, {
-        fetchPolicy: "no-cache"
-      });
+    // const { loading, data } = useQuery(QUERY_QUEST, {
+    //     fetchPolicy: "no-cache"
+    //   });
 
     const questData = [
         {id: 1, username: "ExplorerAsia", title: "Visit the Great Wall", location: "China", continentId: 1 },

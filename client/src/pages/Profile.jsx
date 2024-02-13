@@ -50,9 +50,9 @@ const Profile = () => {
                 <div className="flex justify-center items-center">
                     <div className="w-full justify-between">
                         <div className="text-lg text-teal-700 font-bold">
-                            XP: 1000
+                            XP: Coming Sonn!
                         </div>
-                        <p className="ml-4 text-secondary">Rank: 100</p>
+                        <p className="ml-4 text-secondary">Rank: Coming Soon!</p>
                     </div>
                 </div>
             </div>

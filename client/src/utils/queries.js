@@ -19,7 +19,7 @@ export const QUERY_QUEST = gql`
       # description
       continent
       # country_city
-      xp
+      # xp
       # location
       username {
         _id
@@ -36,7 +36,7 @@ export const QUERY_SINGLE_QUEST = gql`
       # description
       continent
       # country_city
-      xp
+      # xp
       # location
       username {
         _id

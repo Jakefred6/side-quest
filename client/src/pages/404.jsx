@@ -23,21 +23,21 @@ const NotFound = () => {
     return () => clearInterval(intervalId);
   }, [timeLeft]);
 
-  useEffect(() => {
-    if (path === "/" || path === "/dashboard" || path === "/map") {
-      setText("Sorry, you are not authorized to access this page.");
-      setCode("403");
-    } else {
-      setText("Sorry, the page you visited does not exist.");
-      setCode("404");
-    }
-  }, [path]);
+  // useEffect(() => {
+  //   if (path === "/" || path === "/dashboard" || path === "/map") {
+  //     setText("Sorry, you are not authorized to access this page.");
+  //     setCode("403");
+  //   } else {
+  //     setText("Sorry, the page you visited does not exist.");
+  //     setCode("404");
+  //   }
+  // }, [path]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      window.location.replace("/login");
-    }, 3000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     window.location.replace("/login");
+  //   }, 3000);
+  // }, []);
 
   return (
     <div className="flex w-full h-screen justify-center items-center">
