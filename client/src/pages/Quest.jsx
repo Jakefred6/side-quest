@@ -53,7 +53,7 @@ const Quest = () => {
                                 <Input placeholder="Title"/>
                             </Form.Item>
                             <Form.Item name="continent">
-                <Dropdown overlay={continentMenu}>
+                <Dropdown menu={continentMenu}>
                   <Button>
                     Select Continent <DownOutlined />
                   </Button>

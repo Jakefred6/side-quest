@@ -5,12 +5,12 @@ import { Logo } from "../assets";
 import { useContentContext } from "../providers/ContentContext";
 
 const Login = () => {
-  let { openSuccessNotification } = useContentContext();
+  // let { openSuccessNotification } = useContentContext();
 
   const onFinish = (values) => {
     //Login
     localStorage.setItem('token', 'testtoken');
-    openSuccessNotification("Login Sucess!", "Successfully Logged In");
+    // openSuccessNotification("Login Sucess!", "Successfully Logged In");
     window.location.replace("/dashboard");
   };
 
@@ -84,6 +84,7 @@ const Login = () => {
           </Form.Item>
         </Form>
       </div>
+      <p>Test</p>
     </div>
   );
 };

@@ -13,13 +13,13 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { Dashboard } from "../pages";
 import Sidebar from "./Sidebar";
 import { useContentContext } from "../providers/ContentContext";
-import {Profile, Quest} from './../pages';
+import {Profile, Quest} from '../pages';
 
 const Main = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
 
-  let { openSuccessNotification } = useContentContext();
+  // let { openSuccessNotification } = useContentContext();
 
   useEffect(() => {
     if (window.innerWidth < 426) {
@@ -39,7 +39,7 @@ const Main = () => {
   const handleMenuClick = (e) => {
     if (e.key === "1") {
       // Logout
-      openSuccessNotification("Logged Out!", "Logout Success!");
+      // openSuccessNotification("Logged Out!", "Logout Success!");
       localStorage.clear();
       navigate("/login"); // Navigate to the login page
     }
