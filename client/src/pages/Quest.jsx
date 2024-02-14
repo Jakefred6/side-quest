@@ -26,8 +26,9 @@ const Quest = () => {
             const response = await createQuest({
                 variables: {
                     title: values.title,
-                    xp: parseInt(values.xp, 10),
                     continent: parseInt(values.continent, 10),
+                    xp: parseInt(values.xp, 10),
+                    
                 },
             });
             console.log('Quest created successfully', response.data);

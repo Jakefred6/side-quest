@@ -31,13 +31,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    async createQuest(_, { title, description, location, xp }) {
+    async createQuest(_, { title, continent, xp }) {
       // Here you handle the database operation
       const newQuest = new Quest({
         title,
-        description,
-        continent: 1,
-        location,
+        continent,
         xp,
       });
 
