@@ -3,13 +3,13 @@ const Quest = require('../models/Quest');
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
+    users: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
       throw new Error("user not found");
     },
-    quest: async () => {
+    quests: async () => {
       return await Quest.find({});
     },
   },
