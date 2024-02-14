@@ -1,5 +1,6 @@
 import { Card, Form, Input, Button, Select } from "antd";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -14,8 +15,11 @@ const continents = [
 ];
 
 const Quest = () => {
+  const navigate = useNavigate();
+
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    navigate("/dashboard"); // Redirect to dashboard page
   };
 
   return (
@@ -44,8 +48,8 @@ const Quest = () => {
               <Form.Item name="title">
                 <Input placeholder="Title" />
               </Form.Item>
-              <Form.Item name="continent" rules={[{ required: true, message: "Please select a continent" }]}>
-                <Select placeholder="Select continent" allowClear>
+              <Form.Item name="continent">
+                <Select placeholder="Select Continent">
                   {continents.map((continent) => (
                     <Option key={continent.key} value={continent.label}>
                       {continent.label}
@@ -56,9 +60,8 @@ const Quest = () => {
               <Form.Item name="xp">
                 <Input type="text" placeholder="XP" />
               </Form.Item>
-
               <Form.Item>
-                <Button danger type="primary" block>
+                <Button danger type="primary" htmlType="submit" block>
                   Create Quest
                 </Button>
               </Form.Item>
