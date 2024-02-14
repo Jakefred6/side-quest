@@ -14,7 +14,7 @@ const typeDefs = gql`
     # description: String! // Commented out to match Quest.js
     continent: Int!          # Adjusted to match Quest.js
     # country_city: String! // Commented out to match Quest.js
-    # xp: Int!
+    xp: Int!
     # location: String! // Commented out to match Quest.js
     username: String!
   }
@@ -24,7 +24,7 @@ const typeDefs = gql`
     # description: String! // Commented out to match Quest.js
     continent: Int!          # Adjusted to match Quest.js
     # country_city: String! // Commented out to match Quest.js
-    # xp: Int!
+    xp: Int!
     # location: String! // Commented out to match Quest.js
   }
 
