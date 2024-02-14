@@ -3,15 +3,16 @@ import {Card, Typography} from "antd";
 import {Link} from "react-router-dom";
 import {UserOutlined} from "@ant-design/icons";
 import {Modal} from "antd";
+import { useMediaQuery } from 'react-responsive';
 import { useQuery } from '@apollo/client';
 import { QUERY_QUEST } from '../utils/queries';
 
 const {Text} = Typography;
 
 const ContinentMap = ({onContinentClick}) => {
+    const isMobileView = useMediaQuery({ maxWidth: 767 });
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedContinent, setSelectedContinent] = useState([]);
-
     const regionQuestData = [
         {id: 1, username: "Hero1", title: "Retrieve the Lost Artifact", location: "Ancient Ruins"},
         {id: 2, username: "Adventurer42", title: "Uncover the Mystery of the Forbidden Forest", location: "Dark Woods"},
@@ -24,7 +25,7 @@ const ContinentMap = ({onContinentClick}) => {
 
     // State for the modal data to display when a continent is clicked for regionQuestData array
     const [modalData, setModalData] = useState(regionQuestData);
-
+    
     const continents = [
         // Asia
         {
@@ -373,9 +374,20 @@ const ContinentMap = ({onContinentClick}) => {
         setHoveredContinent(null);
     };
 
-    return (
+    return isMobileView ? (
+        // Mobile view: List continents
+        <div className="flex flex-col p-4 overflow-y-auto" style={{ height: "calc(100vh - 32px)" }}>
+            {continents.map((continent) => (
+                <Card key={continent.id} hoverable={true} className="shadow-md mb-4" onClick={() => onContinentClick(continent.id)}>
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="xl:text-xl text-3xl text-sky-500 font-bold">{continent.name}</div>
+                    </div>
+                </Card>
+            ))}
+        </div>
+    ) : (
         <div className="flex flex-row w-full">
-            {/* Custom Map View */}
+            {/* Custom Map View for desktop */}
             <div className="flex flex-col border p-4 overflow-hidden"
                  style={{height: "calc(100vh - 32px)", width: "100%"}}>
                 <svg height="300pt" width="500pt" version="1.0" preserveAspectRatio="xMidYMid meet"
@@ -447,11 +459,7 @@ const ContinentMap = ({onContinentClick}) => {
 };
 
 const Dashboard = () => {
-    // Sample data for gaming quests
-    // const { loading, data } = useQuery(QUERY_QUEST, {
-    //     fetchPolicy: "no-cache"
-    //   });
-
+    const isMobile = useMediaQuery({ maxWidth: 767 });
     const questData = [
         {id: 1, username: "ExplorerAsia", title: "Visit the Great Wall", location: "China", continentId: 1 },
         {id: 2, username: "AdventurousNomad", title: "Explore the Pyramids of Giza", location: "Egypt", continentId: 1},
@@ -469,41 +477,36 @@ const Dashboard = () => {
 
     return (
         <div className="flex flex-row w-full gap-5">
-            {/* List View */}
-            <div className="flex flex-col border p-4 overflow-y-auto"
-                 style={{height: "calc(100vh - 32px)", width: "45%"}}>
-                <div className="flex flex-row w-full justify-between mb-4">
-                    <div className="xl:text-xl text-3xl  font-bold">
-                        Featured Quests
+            {!isMobile && (
+                <div className="flex flex-col border p-4 overflow-y-auto" style={{height: "calc(100vh - 32px)", width: "45%"}}>
+                    <div className="flex flex-row w-full justify-between mb-4">
+                        <div className="xl:text-xl text-3xl font-bold">
+                            Featured Quests
+                        </div>
                     </div>
-                </div>
-                {/* Loop through questData and create a Card for each quest */}
-                {questData.map((quest) => (
-                    <Link key={quest.id} to={{pathname: `/info`}}>
-                        <Card
-                            hoverable={true}
-                            loading={false}
-                            className="shadow-lg mb-4"
-                        >
-                            <div className="flex flex-col justify-center items-center">
-                                <div className="flex flex-row w-full justify-between">
-                                    <div className="xl:text-xl text-3xl text-teal-600 font-bold">
-                                        {quest.username}
+                    {questData.map((quest) => (
+                        <Link key={quest.id} to={{pathname: `/info`}}>
+                            <Card hoverable={true} loading={false} className="shadow-lg mb-4">
+                                <div className="flex flex-col justify-center items-center">
+                                    <div className="flex flex-row w-full justify-between">
+                                        <div className="xl:text-xl text-3xl text-teal-600 font-bold">
+                                            {quest.username}
+                                        </div>
+                                        <UserOutlined />
                                     </div>
-                                    <UserOutlined/>
+                                    <div className="mt-4 xl:text-lg text-xl text-black font-bold">
+                                        <Text type="secondary">{quest.title}</Text>
+                                    </div>
+                                    <div className="mt-2 text-teal-700">Location: {quest.location}</div>
                                 </div>
-                                <div className="mt-4 xl:text-lg text-xl text-black font-bold">
-                                    <Text type="secondary">{quest.title}</Text>
-                                </div>
-                                <div className="mt-2 text-teal-700">Location: {quest.location}</div>
-                            </div>
-                        </Card>
-                    </Link>
-                ))}
-            </div>
+                            </Card>
+                        </Link>
+                    ))}
+                </div>
+            )}
 
-            {/* Map View */}
-            <ContinentMap onContinentClick={handleContinentClick}/>
+            {/* Always show the map view regardless of the device size */}
+            <ContinentMap onContinentClick={handleContinentClick} />
         </div>
     );
 };
