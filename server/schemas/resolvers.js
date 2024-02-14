@@ -1,14 +1,19 @@
 const User = require('../models/User');
 const Quest = require('../models/Quest');
+const { signToken } = require('../models/signToken');
 
 const resolvers = {
   Query: {
-    users: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id });
-      }
-      throw new Error("user not found");
+    users: async () => {
+      return await User.find({});
     },
+    
+    // users: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findOne({ _id: context.user._id });
+    //   }
+    //   throw new Error("user not found");
+    // },
     quests: async () => {
       return await Quest.find({});
     },
@@ -31,6 +36,12 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
+    // createUser: async (parent, { input: { username, email, password } }) => {
+    //   const user = await User.create({ username, email, password });
+    //   const token = signToken(user);
+    //   return { token, user };
+    // },
     async createQuest(_, { title, continent, xp }) {
       // Here you handle the database operation
       const newQuest = new Quest({
