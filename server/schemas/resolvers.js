@@ -17,23 +17,22 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new Error("user not found");
+        throw new Error("User not found");
       }
       const isCorrectPassword = await user.isCorrectPassword(password);
-      console.log(!isCorrectPassword);
       if (!isCorrectPassword) {
-        throw new Error("incorrect credentials");
+        throw new Error("Incorrect credentials");
       }
       const token = signToken(user);
-      return { token, user };
+      return { token, user: { _id: user._id, username: user.username, email: user.email } };
     },
     createUser: async (parent, { username, email, password }) => {
-      const user = new User.create({ username, email, password });
+      const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
     createQuest: async (parent, { title, continent, xp }) => {
-      const quest = new Quest.create({ title, continent, xp });
+      const quest = await Quest.create({ title, continent, xp });
       return quest;
     },
     // deleteQuest: async (parent, { _id }, context) => {

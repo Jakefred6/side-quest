@@ -3,6 +3,7 @@ import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Logo } from "../assets";
 import { useContentContext } from "../providers/ContentContext";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   // let { openSuccessNotification } = useContentContext();
@@ -19,9 +20,6 @@ const Login = () => {
       window.location.replace("/dashboard");
     }
   }, []);
-
-
-
 
   return (
     <div className="flex flex-col w-full h-screen justify-center items-center bg-[#ececec]">
@@ -86,8 +84,8 @@ const Login = () => {
             </Button>
           </Form.Item>
         </Form>
+        <Link to="/signup" className="text-blue-400"> Don't have an account? Sign up here</Link>
       </div>
-      <p>Test</p>
     </div>
   );
 };

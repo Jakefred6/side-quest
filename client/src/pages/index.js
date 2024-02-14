@@ -6,3 +6,4 @@ export { default as Profile } from './Profile';
 export { default as Quest } from './Quest';
 export { default as QuestInfo } from './QuestInfo';
 export { default as Logout } from './Logout';
+export { default as Signup } from './Signup';
