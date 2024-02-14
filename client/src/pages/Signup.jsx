@@ -17,7 +17,17 @@ const Signup = () => {
   };
 
   return (
-    <Form name="signup" onFinish={handleSubmit}>
+   
+
+<div className="flex flex-col w-full h-screen justify-center items-center bg-[#ececec]">
+      <div className="flex flex-col justify-center items-center">
+        
+        <div className="text-2xl font-semibold mt-2">Side Quest</div>
+      </div>
+      <div className="flex flex-col justify-center items-center mt-4 bg-white p-6 sm:px-8 px-4 max-sm:mx-2 rounded-2xl shadow-xl">
+        <div className="text-lg font-medium">Sign Up</div>
+        
+        <Form name="signup" onFinish={handleSubmit}>
       <Form.Item name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
         <Input prefix={<UserOutlined />} placeholder="Username" />
       </Form.Item>
@@ -27,12 +37,23 @@ const Signup = () => {
       <Form.Item name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
         <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
       </Form.Item>
+
       <Form.Item>
-        <Button type="primary" htmlType="button" onClick={handleRegisterClick}>
-          Register
-        </Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="w-full bg-blue-500 mt-4"
+              onClick={handleRegisterClick}
+            >
+              Register
+            </Button>
       </Form.Item>
     </Form>
+
+      </div>
+    </div>
+
+
   );
 };
 
