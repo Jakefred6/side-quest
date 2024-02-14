@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Typography, Button, Form, Input, Select } from "antd";
+import { Card, Typography, Button, Form, Input, Select, notification } from "antd";
 import { useMutation } from '@apollo/client';
 import { CREATE_QUEST } from '../utils/mutations';
 
@@ -18,7 +18,8 @@ const continents = [
 ];
 
 const Quest = () => {
-    const [createQuest, { data, loading, error }] = useMutation(CREATE_QUEST);
+    const [form] = Form.useForm();
+    const [createQuest, { loading, error }] = useMutation(CREATE_QUEST);
 
     const onFinish = async (values) => {
         try {
@@ -30,12 +31,19 @@ const Quest = () => {
                 },
             });
             console.log('Quest created successfully', response.data);
+            notification.success({
+                message: 'Quest Created',
+                description: 'Your quest has been successfully created.',
+            });
+            form.resetFields(); // Reset form fields after successful submission
         } catch (err) {
             console.error('Error creating quest:', err);
-            console.log(err.networkError ? err.networkError.result : err);
+            notification.error({
+                message: 'Creation Failed',
+                description: 'There was an error creating your quest. Please try again.',
+            });
         }
     };
-    
 
     return (
         <div className="flex flex-col w-full justify-center">
@@ -46,6 +54,7 @@ const Quest = () => {
                 <div className="p-4 overflow-y-auto" style={{ width: "70%" }}>
                     <Card hoverable={true} loading={loading} className="shadow-lg mb-4">
                         <Form
+                            form={form}
                             name="quest-form"
                             className="quest-form"
                             initialValues={{ remember: true }}
@@ -69,13 +78,12 @@ const Quest = () => {
                             </Form.Item>
                             <Form.Item
                                 name="xp"
-                                rules={[{ required: true, message: 'Please input the XP reward!' }]}
+                                rules={[{ required: true, message: 'Please input the XP reward!' }, { type: 'int' }]}
                             >
                                 <Input type="number" placeholder="XP" />
                             </Form.Item>
-                            {/* Add more fields as needed */}
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" block danger>
+                                <Button type="primary" htmlType="submit" block danger loading={loading}>
                                     Create Quest
                                 </Button>
                             </Form.Item>
@@ -84,9 +92,7 @@ const Quest = () => {
                 </div>
             </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Quest;
