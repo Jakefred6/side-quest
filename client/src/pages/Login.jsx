@@ -4,11 +4,39 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Logo } from "../assets";
 import { useContentContext } from "../providers/ContentContext";
 import { Link } from "react-router-dom";
+import {QUERY_USER} from "../utils/queries";
+import { useQuery } from '@apollo/client';
+// import { useNavigate, Link} from "react-router-dom";
+// import { gql, useLazyQuery } from '@apollo/client';
 
+// comented code isn't usable right now because of sign up, uncomment when ready and delete other code
 const Login = () => {
-  // let { openSuccessNotification } = useContentContext();
+  // const navigate = useNavigate();
+
+  // const [triggerLogoin, { data }] = useLazyQuery(QUERY_USER, {
+  //   onCompleted: (data) => {
+  //     localStorage.setItem('token', data.login.token);
+  //     Navigate("/dashboard");
+  // }
+  // });
 
   const onFinish = (values) => {
+    //   // Trigger the login query with form values
+    //   triggerLogin({
+    //     variables: {
+    //       email: values.username, // Assuming the 'username' field is actually the user's email
+    //       password: values.password,
+    //     },
+    //   });
+    // };
+  
+    // useEffect(() => {
+    //   // Redirect if already logged in
+    //   if (localStorage.getItem("token")) {
+    //     navigate("/dashboard");
+    //   }
+    // }, [navigate])
+    console.log("Received values of form: ", values);
     //Login
     localStorage.setItem('token', 'testtoken');
     // openSuccessNotification("Login Sucess!", "Successfully Logged In");
