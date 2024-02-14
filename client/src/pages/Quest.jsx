@@ -6,13 +6,13 @@ import React from "react";
 const {Text} = Typography;
 
 const continents = [
-    { key: 1, title: "Asia" },
-    { key: 2, title: "Australia" },
-    { key: 3, title: "South America" },
-    { key: 4, title: "Europe" },
-    { key: 5, title: "Africa" },
-    { key: 6, title: "North America" },
-    { key: 7, title: "Antarctica" },
+    { key: 1, label: "Asia" },
+    { key: 2, label: "Australia" },
+    { key: 3, label: "South America" },
+    { key: 4, label: "Europe" },
+    { key: 5, label: "Africa" },
+    { key: 6, label: "North America" },
+    { key: 7, label: "Antarctica" },
 ]
 
 const Quest = () => {
