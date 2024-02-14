@@ -1,29 +1,32 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { useContentContext } from "../providers/ContentContext";
+import { CREATE_USER } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+// import { useContentContext } from "../providers/ContentContext";
 
 const Signup = () => {
-  const { openSuccessNotification, openErrorNotification } = useContentContext();
-  const [loading, setLoading] = useState(false);
+  // const { openSuccessNotification, openErrorNotification } = useContentContext();
+  // const [signUpUser, { loading }] = useMutation(CREATE_USER);
 
-  const onFinish = async (values) => {
-    setLoading(true);
-    // Simulate signup process (replace with actual API call)
-    try {
-      // Send signup request to server
-      // Example: const response = await signupUser(values);
-      // Handle success
-      openSuccessNotification("Signup Success!", "You have successfully signed up.");
-      // Redirect user to login page or dashboard
-      // Example: history.push("/login");
-    } catch (error) {
-      // Handle error
-      console.error("Signup error:", error);
-      openErrorNotification("Signup Error", "Failed to sign up. Please try again later.");
-    }
-    setLoading(false);
-  };
+  // const onFinish = async (values) => {
+  //   try {
+  //     const { data } = await signUpUser({ 
+  //       variables: {
+  //         username: values.username,
+  //         email: values.email,
+  //         password: values.password,
+  //       },
+  //     });
+
+  //     // Handle response data
+  //     console.log("User created:", data.createUser);
+  //     window.location.replace("/dashboard"); // Redirect upon successful signup
+  //   } catch (error) {
+  //     console.error(error);
+  //     // Handle error gracefully, e.g., display error message to user
+  //   }
+  // };
 
   return (
     <div className="flex flex-col w-full h-screen justify-center items-center bg-[#ececec]">

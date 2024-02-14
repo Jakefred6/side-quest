@@ -31,6 +31,7 @@ const typeDefs = gql`
   type Query {
     users: [User!]!
     quests: [Quest!]!
+    quest(_id: ID!): Quest
   }
 
   type Mutation {

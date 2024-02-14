@@ -13,7 +13,7 @@ export const CREATE_USER = gql`
 
 export const CREATE_QUEST = gql`
   mutation createQuest($title: String!, $description: String!, $location: String!, $xp: Int!) {
-    createQuest(questId: ID!, username: $username) {
+    createQuest(title: $title, description: $description, location: $location, xp: $xp) {
       _id
       title
       # description
@@ -24,5 +24,6 @@ export const CREATE_QUEST = gql`
       username {
         _id
       }
+    }
   }
 `;

@@ -3,7 +3,7 @@ import App from './App.jsx'
 import './index.css'
 import { ContentProvider } from './providers/ContentContext';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Dashboard, Login, Logout, NotFound, Profile, Quest, QuestInfo } from "./pages";
+import { Dashboard, Login, Logout, Signup, NotFound, Profile, Quest, QuestInfo } from "./pages";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -30,11 +30,6 @@ const router = createBrowserRouter([
       //   path: '/logout',
       //   element: <Logout />
       // },
-      // {
-      //   path: '/signup',
-      //   element: <Signup />
-      // },
-      
       {
         path: '/dashboard',
         element: <Dashboard />
@@ -44,7 +39,11 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />
-  },
+  },    
+  {    
+  path: '/signup',
+  element: <Signup />
+  }
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
