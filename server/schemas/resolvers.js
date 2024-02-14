@@ -36,10 +36,9 @@ const resolvers = {
       const newQuest = new Quest({
         title,
         description,
-        continent: 1, // Assuming you have a way to determine this
+        continent: 1,
         location,
         xp,
-        // username: Assuming you have a way to include this
       });
 
       try {
