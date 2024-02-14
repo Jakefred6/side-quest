@@ -84,8 +84,9 @@ const Quest = () => {
                 </div>
             </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Quest;
-
