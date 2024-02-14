@@ -12,18 +12,12 @@ export const CREATE_USER = gql`
 `;
 
 export const CREATE_QUEST = gql`
-  mutation createQuest($title: String!, $description: String!, $location: String!, $xp: Int!) {
-    createQuest(title: $title, description: $description, location: $location, xp: $xp) {
+  mutation createQuest($title: String!, $xp: Int!, $continent: Int!) {
+    createQuest(title: $title, xp: $xp, continent: $continent) {
       _id
       title
-      # description
-      continent
-      # country_city
       xp
-      # location
-      username {
-        _id
-      }
+      continent
     }
   }
 `;
