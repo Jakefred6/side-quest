@@ -87,7 +87,6 @@ const Login = () => {
           </Form.Item>
         </Form>
       </div>
-      <p>Test</p>
     </div>
   );
 };
