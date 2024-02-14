@@ -2,14 +2,38 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { MailOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { CREATE_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 const Signup = () => {
   const navigate = useNavigate(); // Initialize useNavigate
+  // const [createUser] = useMutation(CREATE_USER, (
+  //   onCompleted: () => {
+  //     navigate('/dashboard');
+  //   },
+  //   onError: (error) => {
+  //     console.error(error);
+  //   }
+  // )); // Initialize createUser mutation, it breaks the app so uncomment it when ready to use
 
   const handleSubmit = (values) => {
     console.log('Received values of form: ', values);
     // Normally, here you would call a createUser mutation or similar to register the user
-    // After successful registration, navigate to the dashboard
+    // try {
+    //   await createUser({
+    //     variables: {
+    //       username: values.username,
+    //       email: values.email,
+    //       password: values.password,
+    //     },
+    //   });
+    //   // Navigation to dashboard is handled in the onCompleted callback of the mutation
+    // } catch (err) {
+    //   // Errors are handled in the onError callback of the mutation
+    //   console.error('Error submitting form:', err);
+    // }
+    // After successful registration, navigate to the dashboard. Get rid of this line, uncomment the 
+    // previous block when ready to use
     navigate('/dashboard');
   };
 
