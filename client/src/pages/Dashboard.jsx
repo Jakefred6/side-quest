@@ -474,7 +474,7 @@ const Dashboard = () => {
                  style={{height: "calc(100vh - 32px)", width: "45%"}}>
                 <div className="flex flex-row w-full justify-between mb-4">
                     <div className="xl:text-xl text-3xl  font-bold">
-                        New Quest Feed
+                        Featured Quests
                     </div>
                 </div>
                 {/* Loop through questData and create a Card for each quest */}
