@@ -46,7 +46,7 @@ const Profile = () => {
     return (
         <div className="flex flex-col w-full justify-center items-center"> 
             <div className="flex justify-between items-center w-full p-4 mb-5 border">
-            <h1 className="text-lg text-teal-600 font-bold">Jake Marsee</h1>
+            <h1 className="text-lg text-teal-600 font-bold">Welcome Adventurer!</h1>
                 <div className="flex justify-center items-center">
                     <div className="w-full justify-between">
                         <div className="text-lg text-teal-700 font-bold">
