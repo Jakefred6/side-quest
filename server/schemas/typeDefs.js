@@ -9,14 +9,13 @@ const typeDefs = gql`
   }
 
   type Quest {
-    _id: ID!
-    title: String!
-    # description: String! // Commented out to match Quest.js
-    continent: Int!          # Adjusted to match Quest.js
-    # country_city: String! // Commented out to match Quest.js
-    # xp: Int!
-    # location: String! // Commented out to match Quest.js
-    username: String!
+    _id: ID
+    title: String
+    description: String
+    continent: Int
+    location: String
+    xp: Int
+    username: User
   }
 
   input QuestInput {
@@ -36,7 +35,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(username: String!, email: String!): User!
-    createQuest(input: QuestInput!): Quest!
+    createQuest(title: String!, description: String!, location: String!, xp: Int!): Quest
     updateUser(id: ID!, username: String, email: String): User!
     deleteQuest(id: ID!): Quest!
     login(email: String!, password: String!): AuthPayload! # Define login mutation

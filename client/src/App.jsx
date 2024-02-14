@@ -1,7 +1,6 @@
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { Outlet } from "react-router-dom";
 import Nav from "./layouts/Nav";
-import Sidebar from "./layouts/Sidebar";
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({

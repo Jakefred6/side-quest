@@ -31,10 +31,23 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    createQuest: async (parent, { title, continent, xp }) => {
-      const quest = await Quest.create({ title, continent, xp });
-      return quest;
-    },
+    async createQuest(_, { title, description, location, xp }) {
+      // Here you handle the database operation
+      const newQuest = new Quest({
+        title,
+        description,
+        continent: 1,
+        location,
+        xp,
+      });
+
+      try {
+        const result = await newQuest.save();
+        return result;
+      } catch (error) {
+        throw new Error(error);
+      }
+    }
     // deleteQuest: async (parent, { _id }, context) => {
     //   const updatedQuest = await User.findByIdAndUpdate(
     //     {
