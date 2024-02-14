@@ -1,16 +1,19 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { MailOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
-import { useMutation } from '@apollo/client';
-import { CREATE_USER } from '../utils/mutations';
-
-
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Signup = () => {
-  // const {createUser, loading, error} = useMutation(CREATE_USER);
-  // Example handleSubmit function that does nothing (for now)
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleSubmit = (values) => {
     console.log('Received values of form: ', values);
+    // Normally, you would call createUser mutation here
+  };
+
+  // Function to handle redirection
+  const handleRegisterClick = () => {
+    navigate('/dashboard'); // Navigate to dashboard on button click
   };
 
   return (
@@ -25,7 +28,7 @@ const Signup = () => {
         <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="button" onClick={handleRegisterClick}>
           Register
         </Button>
       </Form.Item>
