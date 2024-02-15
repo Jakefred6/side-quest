@@ -135,9 +135,8 @@ const Main = () => {
           </Routes>
         </Content>
         <Footer className="text-center pt-0">
-          Copyright 202 © ALL RIGHTS RESERVED. Design by{" "}
+          Copyright 202 © ALL RIGHTS RESERVED.
           <a href="https://aventureit.com" target="_blank" rel="noreferrer">
-            Jake
           </a>
         </Footer>
       </Layout>
