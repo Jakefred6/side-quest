@@ -1,7 +1,5 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
-import { ContentProvider } from './providers/ContentContext';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Dashboard, Login, Logout, Signup, NotFound, Profile, Quest, QuestInfo } from "./pages";
 const router = createBrowserRouter([
@@ -26,10 +24,6 @@ const router = createBrowserRouter([
         path: '/profile',
         element: <Profile />
       },
-      // {
-      //   path: '/logout',
-      //   element: <Logout />
-      // },
       {
         path: '/dashboard',
         element: <Dashboard />
